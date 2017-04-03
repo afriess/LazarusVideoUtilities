@@ -19,4 +19,4 @@ This project will also serve as the test bed for enhancements to the Lazarus-CCR
 Sources: 2016-02-06 R35
  Initial: Mike.Cornflake  https://sourceforge.net/projects/lazarusvideoutilities/
  
---------------------- 
+--------------------
