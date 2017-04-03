@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="4">
+    <PathDelim Value="\"/>
+    <Name Value="Laz_Win_DirectX"/>
+    <AddToProjectUsesSection Value="True"/>
+    <Author Value="Some see description"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <PathDelim Value="\"/>
+      <SearchPaths>
+        <IncludeFiles Value="source"/>
+        <OtherUnitFiles Value="Source"/>
+        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)\$(LCLWidgetType)"/>
+      </SearchPaths>
+      <Parsing>
+        <Style Value="1"/>
+        <SyntaxOptions>
+          <CStyleOperator Value="False"/>
+          <UseAnsiStrings Value="False"/>
+        </SyntaxOptions>
+      </Parsing>
+    </CompilerOptions>
+    <Description Value="Windows DirectX 7, 8, 9 and  9ex Library
+
+DirectX 8.1 Delphi adaptation by Alexey Barkovoy 
+E-Mail: directx@clootie.ru 
+  Modified: 19-Jan-2004        
+
+  Partly based upon :        
+    DirectX 7.0 Object Pascal adaptation by
+    Erik Unger, e-Mail: DelphiDirectX@next-reality.com                    *}
+    DirectXGraphics 8.0 ObjectPascal adaptation byTim Baumgarten, e-Mail: ampaze@gmx.net "/>
+    <License Value="Copyright (C) Microsoft Corporation.  All Rights Reserved. 
+Files:      d3d8types.h d3d8caps.h d3d8.h
+Content:    Direct3D8 include files  
+-------------
+Obtained through: Joint Endeavour of Delphi Innovators (Project JEDI)
+------------
+http://www.mozilla.org/MPL/MPL-1.1.html"/>
+    <Version Major="3" Release="1"/>
+    <Files Count="23">
+      <Item1>
+        <Filename Value="Source\D3DX8.pas"/>
+        <UnitName Value="D3DX8"/>
+      </Item1>
+      <Item2>
+        <Filename Value="Source\D3DX9.pas"/>
+        <UnitName Value="D3DX9"/>
+      </Item2>
+      <Item3>
+        <Filename Value="Source\Direct3D.pas"/>
+        <UnitName Value="Direct3D"/>
+      </Item3>
+      <Item4>
+        <Filename Value="Source\Direct3D8.pas"/>
+        <UnitName Value="Direct3D8"/>
+      </Item4>
+      <Item5>
+        <Filename Value="Source\Direct3D9.pas"/>
+        <UnitName Value="Direct3D9"/>
+      </Item5>
+      <Item6>
+        <Filename Value="Source\DirectDraw.pas"/>
+        <UnitName Value="DirectDraw"/>
+      </Item6>
+      <Item7>
+        <Filename Value="Source\DirectInput.pas"/>
+        <UnitName Value="DirectInput"/>
+      </Item7>
+      <Item8>
+        <Filename Value="Source\DirectMusic.pas"/>
+        <UnitName Value="DirectMusic"/>
+      </Item8>
+      <Item9>
+        <Filename Value="Source\DirectPlay8.pas"/>
+        <UnitName Value="DirectPlay8"/>
+      </Item9>
+      <Item10>
+        <Filename Value="source\DirectSetup.pas"/>
+        <UnitName Value="DirectSetup"/>
+      </Item10>
+      <Item11>
+        <Filename Value="source\DirectShow9.pas"/>
+        <UnitName Value="DirectShow9"/>
+      </Item11>
+      <Item12>
+        <Filename Value="Source\DirectSound.pas"/>
+        <UnitName Value="DirectSound"/>
+      </Item12>
+      <Item13>
+        <Filename Value="source\DirectX.inc"/>
+        <Type Value="Include"/>
+      </Item13>
+      <Item14>
+        <Filename Value="Source\DX7toDX8.pas"/>
+        <UnitName Value="DX7toDX8"/>
+      </Item14>
+      <Item15>
+        <Filename Value="Source\DxDiag.pas"/>
+        <UnitName Value="DxDiag"/>
+      </Item15>
+      <Item16>
+        <Filename Value="source\DXErr8.pas"/>
+        <UnitName Value="DXErr8"/>
+      </Item16>
+      <Item17>
+        <Filename Value="source\DXErr9.pas"/>
+        <UnitName Value="DXErr9"/>
+      </Item17>
+      <Item18>
+        <Filename Value="Source\DXFile.pas"/>
+        <UnitName Value="DXFile"/>
+      </Item18>
+      <Item19>
+        <Filename Value="Source\DXTypes.pas"/>
+        <UnitName Value="DXTypes"/>
+      </Item19>
+      <Item20>
+        <Filename Value="source\WMF9.pas"/>
+        <UnitName Value="WMF9"/>
+      </Item20>
+      <Item21>
+        <Filename Value="source\X3DAudio.pas"/>
+        <UnitName Value="X3DAudio"/>
+      </Item21>
+      <Item22>
+        <Filename Value="source\XAct.pas"/>
+        <UnitName Value="xact"/>
+      </Item22>
+      <Item23>
+        <Filename Value="source\XInput.pas"/>
+        <UnitName Value="XInput"/>
+      </Item23>
+    </Files>
+    <RequiredPkgs Count="2">
+      <Item1>
+        <PackageName Value="LCL"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="FCL"/>
+        <MinVersion Major="1" Valid="True"/>
+      </Item2>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IgnoreBinaries Value="False"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

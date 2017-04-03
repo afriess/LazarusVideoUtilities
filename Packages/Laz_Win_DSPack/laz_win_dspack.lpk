@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="4">
+    <PathDelim Value="\"/>
+    <Name Value="Laz_Win_DSPack"/>
+    <Type Value="RunAndDesignTime"/>
+    <Author Value="Some see description"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <PathDelim Value="\"/>
+      <SearchPaths>
+        <IncludeFiles Value="source"/>
+        <OtherUnitFiles Value="source"/>
+        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)\$(LCLWidgetType)"/>
+      </SearchPaths>
+      <Linking>
+        <Debugging>
+          <GenerateDebugInfo Value="False"/>
+        </Debugging>
+      </Linking>
+    </CompilerOptions>
+    <Description Value="DirectShow Components 2
+DSPack 2.3.3
+home page : http://www.progdigy.com
+email     : hgourvest@progdigy.com 
+Thanks to Michael Andersen. (DSVideoWindowEx) 
+date      : 2003-09-08"/>
+    <License Value="The contents of this file are used with permission, subject to  the Mozilla Public License Version 1.1 (the &quot;License&quot;)"/>
+    <Version Major="2" Minor="3" Release="3"/>
+    <Files Count="9">
+      <Item1>
+        <Filename Value="source\BaseClass.pas"/>
+        <UnitName Value="BaseClass"/>
+      </Item1>
+      <Item2>
+        <Filename Value="source\BaseFilterEditor.pas"/>
+        <UnitName Value="BaseFilterEditor"/>
+      </Item2>
+      <Item3>
+        <Filename Value="source\BaseFilterEditor.lfm"/>
+        <Type Value="LFM"/>
+      </Item3>
+      <Item4>
+        <Filename Value="source\DSEditors.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="DSEditors"/>
+      </Item4>
+      <Item5>
+        <Filename Value="source\DSPack.pas"/>
+        <UnitName Value="DSPack"/>
+      </Item5>
+      <Item6>
+        <Filename Value="source\dspack.inc"/>
+        <Type Value="Include"/>
+      </Item6>
+      <Item7>
+        <Filename Value="source\DXSUtil.pas"/>
+        <UnitName Value="DXSUtil"/>
+      </Item7>
+      <Item8>
+        <Filename Value="source\MediaTypeEditor.pas"/>
+        <UnitName Value="MediaTypeEditor"/>
+      </Item8>
+      <Item9>
+        <Filename Value="source\MediaTypeEditor.lfm"/>
+        <Type Value="LFM"/>
+      </Item9>
+    </Files>
+    <RequiredPkgs Count="3">
+      <Item1>
+        <PackageName Value="Laz_Win_DirectX"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="IDEIntf"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="FCL"/>
+      </Item3>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

@@ -16,7 +16,7 @@ A set of additional components are planned, all of which will use the common int
 This project will also serve as the test bed for enhancements to the Lazarus-CCR mplayer package.
 
 
-Sources:
+Sources: 2016-02-06 R35
  Initial: Mike.Cornflake  https://sourceforge.net/projects/lazarusvideoutilities/
  
 --------------------- 
