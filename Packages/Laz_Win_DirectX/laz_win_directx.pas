@@ -4,7 +4,6 @@
 
 unit Laz_Win_DirectX;
 
-{$warn 5023 off : no warning about unused units}
 interface
 
 uses
@@ -14,4 +13,4 @@ uses
 
 implementation
 
-end .
+end.

@@ -3,6 +3,7 @@ object FormMediaType: TFormMediaType
   Height = 239
   Top = 196
   Width = 311
+  ActiveControl = btOK
   BorderStyle = bsToolWindow
   Caption = ' MediaType Editor'
   ClientHeight = 239
@@ -13,44 +14,44 @@ object FormMediaType: TFormMediaType
   Font.Name = 'MS Sans Serif'
   OnShow = FormShow
   Position = poDesktopCenter
-  LCLVersion = '1.1'
+  Visible = False
   object Label1: TLabel
     Left = 8
-    Height = 14
+    Height = 13
     Top = 8
-    Width = 54
+    Width = 53
     Caption = 'Major Type'
     ParentColor = False
   end
   object Label2: TLabel
     Left = 160
-    Height = 14
+    Height = 13
     Top = 8
-    Width = 47
+    Width = 46
     Caption = 'Sub Type'
     ParentColor = False
   end
   object Label3: TLabel
     Left = 160
-    Height = 14
+    Height = 13
     Top = 48
-    Width = 59
+    Width = 58
     Caption = 'Sample Size'
     ParentColor = False
   end
   object Label4: TLabel
     Left = 160
-    Height = 14
+    Height = 13
     Top = 96
-    Width = 60
+    Width = 59
     Caption = 'Format Type'
     ParentColor = False
   end
   object lblFormatSize: TLabel
     Left = 8
-    Height = 14
+    Height = 13
     Top = 96
-    Width = 56
+    Width = 55
     Caption = 'Format Size'
     ParentColor = False
   end
@@ -94,18 +95,18 @@ object FormMediaType: TFormMediaType
   end
   object chkFixedSize: TCheckBox
     Left = 8
-    Height = 17
+    Height = 19
     Top = 56
-    Width = 109
+    Width = 111
     Caption = 'Fixed Size Samples'
     OnClick = chkFixedSizeClick
     TabOrder = 4
   end
   object chkTempCompress: TCheckBox
     Left = 8
-    Height = 17
+    Height = 19
     Top = 72
-    Width = 125
+    Width = 127
     Caption = 'Temporal Compression'
     OnClick = chkTempCompressClick
     TabOrder = 5

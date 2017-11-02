@@ -4,7 +4,6 @@
 
 unit Laz_Win_DSPack;
 
-{$warn 5023 off : no warning about unused units}
 interface
 
 uses
@@ -16,8 +15,8 @@ implementation
 procedure Register;
 begin
   RegisterUnit('DSEditors', @DSEditors.Register);
-end ;
+end;
 
 initialization
   RegisterPackage('Laz_Win_DSPack', @Register);
-end .
+end.
