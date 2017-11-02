@@ -15,6 +15,7 @@ object FormBaseFilter: TFormBaseFilter
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   Position = poScreenCenter
+  LCLVersion = '1.8.0.5'
   Visible = False
   object InfoBtn: TSpeedButton
     Cursor = crHandPoint
@@ -54,10 +55,10 @@ object FormBaseFilter: TFormBaseFilter
     Height = 292
     Top = 0
     Width = 411
-    ActivePage = SelectorSheet
+    ActivePage = InfoSheet
     Align = alTop
     Anchors = [akTop, akLeft, akRight, akBottom]
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 2
     object SelectorSheet: TTabSheet
       Caption = 'Selector'

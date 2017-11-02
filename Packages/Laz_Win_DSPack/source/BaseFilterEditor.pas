@@ -544,6 +544,8 @@ implementation
 uses Activex, ComObj;
 
 {$R *.lfm}
+{$R *.res}
+
 
   constructor TFormBaseFilter.Create(AOwner: TComponent);
   begin
