@@ -1,0 +1,92 @@
+object FormWebCam: TFormWebCam
+  Left = 0
+  Height = 439
+  Top = 0
+  Width = 619
+  ActiveControl = VideoWindow
+  Caption = 'FormWebCam'
+  ClientHeight = 439
+  ClientWidth = 619
+  DesignTimePPI = 120
+  Menu = MainMenu
+  OnClose = FormClose
+  OnCreate = FormCreate
+  Visible = False
+  object VideoWindow: TVideoWindow
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 5
+    Height = 219
+    Top = 12
+    Width = 315
+    FilterGraph = FilterGraph
+    VMROptions.Mode = vmrWindowed
+    Color = clBlack
+    Anchors = []
+    Canvas.AutoRedraw = False
+    Canvas.Brush.Color = clBlack
+  end
+  object LbInterfaces: TListBox
+    Left = 328
+    Height = 80
+    Top = 24
+    Width = 248
+    ItemHeight = 0
+    Options = [lboDrawFocusRect]
+    TabOrder = 1
+  end
+  object LblInterfaces: TLabel
+    Left = 328
+    Height = 20
+    Top = 5
+    Width = 64
+    Caption = 'Interfaces'
+    ParentColor = False
+  end
+  object MainMenu: TMainMenu
+    Left = 276
+    Top = 133
+    object Devices: TMenuItem
+      Caption = 'Devices'
+    end
+    object MenuItem2: TMenuItem
+      Action = actShowFilterEditor
+    end
+    object MenuItem1: TMenuItem
+      Action = actFileExit
+    end
+  end
+  object ActionList: TActionList
+    Left = 352
+    Top = 133
+    object actFileExit: TFileExit
+      Category = 'File'
+      Caption = 'E&xit'
+      Hint = 'Exit'
+    end
+    object actShowFilterEditor: TAction
+      Category = 'Editor'
+      Caption = 'Show FilterEditor'
+      OnExecute = actShowFilterEditorExecute
+    end
+  end
+  object FilterGraph: TFilterGraph
+    Mode = gmCapture
+    GraphEdit = True
+    LinearVolume = True
+    Left = 117
+    Top = 161
+  end
+  object Filter: TFilter
+    BaseFilter.data = {
+      00000000
+    }
+    FilterGraph = FilterGraph
+    Left = 114
+    Top = 232
+  end
+end

@@ -1,0 +1,74 @@
+object VideoForm: TVideoForm
+  Left = 199
+  Height = 255
+  Top = 131
+  Width = 319
+  ActiveControl = VideoWindow
+  Caption = 'Video Capture Devices'
+  ClientHeight = 255
+  ClientWidth = 319
+  Color = clBtnFace
+  DesignTimePPI = 120
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Menu = MainMenu1
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  Visible = False
+  object VideoWindow: TVideoWindow
+    Left = 0
+    Height = 255
+    Top = 0
+    Width = 319
+    Mode = vmVMR
+    FilterGraph = FilterGraph
+    VMROptions.Mode = vmrWindowless
+    Color = clBlack
+    Canvas.AutoRedraw = False
+    Canvas.Brush.Color = clBlack
+    Canvas.Font.Color = clWindowText
+    Canvas.Font.Height = -11
+    Canvas.Font.Name = 'MS Sans Serif'
+    Align = alClient
+  end
+  object FilterGraph: TFilterGraph
+    Mode = gmCapture
+    GraphEdit = True
+    LinearVolume = True
+    Left = 8
+    Top = 8
+  end
+  object MainMenu1: TMainMenu
+    Left = 8
+    Top = 72
+    object Devices: TMenuItem
+      Caption = 'Devices'
+    end
+    object Blend1: TMenuItem
+      Caption = 'Blend'
+      object ext1: TMenuItem
+        Caption = 'Text'
+        OnClick = ext1Click
+      end
+      object Bitmap1: TMenuItem
+        Caption = 'Bitmap'
+        OnClick = Bitmap1Click
+      end
+    end
+  end
+  object Filter: TFilter
+    BaseFilter.data = {
+      00000000
+    }
+    FilterGraph = FilterGraph
+    Left = 8
+    Top = 40
+  end
+  object OpenDialog: TOpenDialog
+    Filter = 'BMP file|*.bmp'
+    Left = 8
+    Top = 104
+  end
+end

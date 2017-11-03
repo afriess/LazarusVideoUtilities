@@ -1,0 +1,202 @@
+object FormEditor: TFormEditor
+  Left = 428
+  Height = 243
+  Top = 277
+  Width = 425
+  ActiveControl = PageControl1
+  BorderStyle = bsDialog
+  Caption = 'Filter Editor'
+  ClientHeight = 243
+  ClientWidth = 425
+  Color = clBtnFace
+  DesignTimePPI = 120
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  OnCloseQuery = FormCloseQuery
+  OnShow = FormShow
+  Position = poScreenCenter
+  Visible = False
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 243
+    Top = 0
+    Width = 425
+    ActivePage = Selector
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 0
+    object Selector: TTabSheet
+      Caption = 'Selector'
+      ClientHeight = 217
+      ClientWidth = 417
+      object Label1: TLabel
+        Left = 8
+        Height = 13
+        Top = 8
+        Width = 50
+        Caption = 'Categories'
+        ParentColor = False
+      end
+      object Label2: TLabel
+        Left = 8
+        Height = 13
+        Top = 48
+        Width = 27
+        Caption = 'Filters'
+        ParentColor = False
+      end
+      object Label3: TLabel
+        Left = 240
+        Height = 13
+        Top = 8
+        Width = 47
+        Caption = 'Interfaces'
+        ParentColor = False
+      end
+      object cbCategories: TComboBox
+        Left = 8
+        Height = 21
+        Top = 24
+        Width = 225
+        ItemHeight = 13
+        OnChange = cbCategoriesChange
+        Style = csDropDownList
+        TabOrder = 0
+      end
+      object lbFilters: TListBox
+        Left = 8
+        Height = 137
+        Top = 64
+        Width = 225
+        ItemHeight = 0
+        OnClick = lbFiltersClick
+        Options = [lboDrawFocusRect]
+        PopupMenu = PopupMenue
+        TabOrder = 1
+      end
+      object Interfaces: TListBox
+        Left = 240
+        Height = 177
+        Top = 24
+        Width = 169
+        ItemHeight = 0
+        OnDblClick = InterfacesDblClick
+        Options = [lboDrawFocusRect]
+        TabOrder = 2
+      end
+    end
+    object Pins: TTabSheet
+      Caption = 'Pins'
+      ClientHeight = 0
+      ClientWidth = 0
+      ImageIndex = 1
+      OnShow = PinsShow
+      object Label4: TLabel
+        Left = 0
+        Height = 13
+        Top = 8
+        Width = 20
+        Caption = 'Pins'
+        ParentColor = False
+      end
+      object Label5: TLabel
+        Left = 152
+        Height = 13
+        Top = 8
+        Width = 47
+        Caption = 'Interfaces'
+        ParentColor = False
+      end
+      object lbPins: TListBox
+        Left = 0
+        Height = 97
+        Top = 24
+        Width = 145
+        ItemHeight = 0
+        OnClick = lbPinsClick
+        Options = [lboDrawFocusRect]
+        PopupMenu = PinMenu
+        TabOrder = 0
+      end
+      object PinInterfaces: TListBox
+        Left = 152
+        Height = 97
+        Top = 24
+        Width = 177
+        ItemHeight = 0
+        OnDblClick = PinInterfacesDblClick
+        Options = [lboDrawFocusRect]
+        TabOrder = 1
+      end
+      object MediaTypes: TListBox
+        Left = 0
+        Height = 73
+        Top = 128
+        Width = 409
+        ItemHeight = 0
+        Options = [lboDrawFocusRect]
+        TabOrder = 2
+      end
+    end
+  end
+  object FilterGraph: TFilterGraph
+    AutoCreate = True
+    GraphEdit = False
+    LinearVolume = True
+    Left = 16
+    Top = 96
+  end
+  object Filter: TFilter
+    BaseFilter.data = {
+      00000000
+    }
+    FilterGraph = FilterGraph
+    Left = 48
+    Top = 96
+  end
+  object PopupMenue: TPopupMenu
+    OnPopup = PopupMenuePopup
+    Left = 80
+    Top = 96
+    object PropertyPage: TMenuItem
+      Caption = 'Property Page'
+      OnClick = PropertyPageClick
+    end
+    object VFWCapture: TMenuItem
+      Caption = 'VFW Capture'
+      object VFWFormat: TMenuItem
+        Caption = 'Format'
+        OnClick = VFWFormatClick
+      end
+      object VFWSource: TMenuItem
+        Caption = 'Source'
+        OnClick = VFWSourceClick
+      end
+      object VFWDisplay: TMenuItem
+        Caption = 'Display'
+        OnClick = VFWDisplayClick
+      end
+    end
+    object VFWConfig: TMenuItem
+      Caption = 'VFW Compress'
+      object Config1: TMenuItem
+        Caption = 'Config'
+        OnClick = Config1Click
+      end
+      object VFWAbout: TMenuItem
+        Caption = 'About'
+        OnClick = VFWAboutClick
+      end
+    end
+  end
+  object PinMenu: TPopupMenu
+    OnPopup = PinMenuPopup
+    Left = 112
+    Top = 96
+    object PinProperty: TMenuItem
+      Caption = 'Property Page'
+      OnClick = PinPropertyClick
+    end
+  end
+end

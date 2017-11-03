@@ -1,0 +1,100 @@
+\subsection{Configure the Video Quality}
+This topic describes how an application can programmatically change the image and camera settings on a video capture device.
+
+\begin{itemize}
+	\item ProcAmp Settings
+	\item Camera Settings
+	\item Related topics
+	\item ProcAmp Settings
+\end{itemize}
+
+Windows Driver Model (WDM) video cameras can support properties that control the quality of the image:
+
+\begin{itemize}
+	\item 	\item Backlight compensation
+	\item Brightness
+	\item Contrast
+	\item Gain
+	\item Gamma
+	\item Hue
+	\item Saturation
+	\item Sharpness
+	\item White balance
+
+\end{itemize}
+These properties are controlled through the IAMVideoProcAmp interface. Use this interface as follows:
+Call QueryInterface on the capture filter for the IAMVideoProcAmp interface.
+
+For each property that you want to set, call the IAMVideoProcAmp::GetRange method. Properties are specified by the VideoProcAmpProperty enumeration. If the GetRange method fails, it means the camera does not support that particular property.
+
+If GetRange succeeds, it returns the range of supported values for the property, the default value, and the minimum increment.
+
+To get the current value of a property, call IAMVideoProcAmp::Get.
+
+To set a property, call the IAMVideoProcAmp::Set method. To restore a property to its default value, call GetRange to find the default and pass that value to the Set method.
+
+You do not have to stop the filter graph when you set the properties.
+
+The following code configures a trackbar control so that it can be used to set the brightness. The range of the trackbar corresponds to the brightness range that the device supports, and position of the trackbar corresponds to the device's initial brightness setting.
+
+\begin{verbatim}
+C++
+
+HWND hTrackbar; // Handle to the trackbar control. 
+// Initialize hTrackbar (not shown).
+
+// Query the capture filter for the IAMVideoProcAmp interface.
+IAMVideoProcAmp *pProcAmp = 0;
+hr = pCap->QueryInterface(IID_IAMVideoProcAmp, (void**)&pProcAmp);
+if (FAILED(hr))
+{
+    // The device does not support IAMVideoProcAmp, so disable the control.
+    EnableWindow(hTrackbar, FALSE);
+}
+else
+{
+    long Min, Max, Step, Default, Flags, Val;
+	
+    // Get the range and default value. 
+    hr = m_pProcAmp->GetRange(VideoProcAmp_Brightness, &Min, &Max, &Step, &Default, &Flags);
+    if (SUCCEEDED(hr))
+    {
+        // Get the current value.
+        hr = m_pProcAmp->Get(VideoProcAmp_Brightness, &Val, &Flags);
+    }
+    if (SUCCEEDED(hr))
+    {
+        // Set the trackbar range and position.
+        SendMessage(hTrackbar, TBM_SETRANGE, TRUE, MAKELONG(Min, Max));
+        SendMessage(hTrackbar, TBM_SETPOS, TRUE, Val);
+        EnableWindow(hTrackbar, TRUE);
+    }
+    else
+    {
+        // This property is not supported, so disable the control.
+        EnableWindow(hTrackbar, FALSE);
+    }
+}
+\end{verbatim}
+
+Camera Settings
+
+The IAMCameraControl interface is similar to IAMVideoProcAmp, but controls various setttings on the camera itself:
+\begin{itemize}
+    \item Exposure
+    \item Focus
+    \item Iris
+    \item Pan
+    \item Roll
+    \item Tilt
+    \item Zoom
+\end{itemize}
+To use this interface, follow the same steps used for IAMVideoProcAmp:
+
+Query the capture filter for the IAMCameraControl.
+
+Call IAMCameraControl::GetRange to find which settings are supported, and the possible range for each settings.
+
+Call IAMCameraControl::Get to get the current value of a setting.
+
+Call IAMCameraControl::Set to set the value.

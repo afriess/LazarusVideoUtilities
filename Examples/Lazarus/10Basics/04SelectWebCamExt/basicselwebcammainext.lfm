@@ -1,0 +1,34 @@
+object BasicCatForm: TBasicCatForm
+  Left = 0
+  Height = 351
+  Top = 0
+  Width = 502
+  ActiveControl = BuSelect
+  Caption = 'BasicCatForm'
+  ClientHeight = 351
+  ClientWidth = 502
+  DesignTimePPI = 120
+  OnDestroy = FormDestroy
+  Visible = False
+  object BuSelect: TButton
+    Left = 8
+    Height = 25
+    Top = 8
+    Width = 360
+    Caption = 'Enum VideoInputDeviceCategory'
+    OnClick = BuSelectClick
+    TabOrder = 0
+  end
+  object TV: TTreeView
+    Left = 8
+    Height = 296
+    Top = 40
+    Width = 361
+    DefaultItemHeight = 22
+    ReadOnly = True
+    TabOrder = 1
+    OnDblClick = TVDblClick
+    OnDeletion = TVDeletion
+    Options = [tvoAutoItemHeight, tvoHideSelection, tvoKeepCollapsedNodes, tvoReadOnly, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips, tvoThemedDraw]
+  end
+end

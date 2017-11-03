@@ -1,0 +1,85 @@
+\documentclass[10pt,
+a4paper,
+oneside,
+%BCOR=25mm,
+titlepage,
+bibtotocnumbered,	  % Literaturverzeichnis ins Inhaltsverzeichnis
+liststotocnumbered]{scrbook}
+\usepackage[T1]{fontenc}
+\usepackage{ngerman}
+\usepackage{listings}
+%%\usepackage{amsmath}
+%%\usepackage{amsfonts}
+%%\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[colorlinks]{hyperref} 
+%\usepackage{namref}
+%\usepackage[section]{glossaries} 
+\usepackage[toc]{glossaries}
+\makenoidxglossaries
+\loadglsentries{GlossariesDef} 
+\usepackage[numbers,round]{natbib}
+\bibliographystyle{alphadin}
+\author{Andreas Frieß}
+\title{DirectShow und Lazarus}
+%#### Begin des Dokumentes ####
+\begin{document}
+\setcounter{tocdepth}{3} %Tiefe des Inhaltsverzeichnis
+%###############################################
+% Umschlag und Titelseite
+%###############################################
+\pagestyle{empty} %%Keine Kopf-/Fusszeilen auf den ersten Seiten.
+\maketitle 						% Titelei wird erzeugt
+%\begin{center}
+%\textbf{Andreas Frieß 2017}
+%\end{center}
+%\begin{quote}
+%	Copyright (C) 2007-2017 Andreas Frieß.
+%	Es wird die Erlaubnis gewährt, dieses Dokument zu kopieren, zu
+%	verteilen und/oder zu modifizieren, unter den Bestimmungen der
+%	GNU Free Documentation License, Version 1.2 oder jede spätere
+%	Version, veröffentlicht von der Free Software Foundation; mit
+%	keinen unveränderlichen Abschnitten, keinen vorderen
+%	Umschlagtexten und keinen hinteren Umschlagtexten. Eine Kopie der
+%	Lizenz ist aufgenommen in den Abschnitt mit dem Titel "GNU Free
+%	Documentation License".
+%	
+%	Copyright \copyright{}  2007-2017 Andreas Frieß
+%	Permission is granted to copy, distribute and/or modify this document
+%	under the terms of the GNU Free Documentation License, Version 1.2
+%	or any later version published by the Free Software Foundation;
+%	with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+%	A copy of the license is included in the section entitled ``GNU
+%	Free Documentation License''.
+%\end{quote}
+%\newpage
+%###############################################
+% Inhaltsverzeichnis
+%###############################################
+%\section[Inhaltsverzeichnis]{Inhaltsverzeichnis}
+\tableofcontents			% Inhaltsverzeichnis
+
+\newpage
+\pagestyle{headings} %% Kopf-/Fusszeilen aktivieren
+
+\part[Lazarus und DirectShow]{Lazarus und DirectShow (deutsch)}
+\chapter{Allgemein}
+\section{Grundlagen}
+\input{LazAllgemein}
+\input{LazInterfaces}
+\section{Filter}
+\input{LazFilterenum}
+
+
+%###########################################################
+% Verzeichnisse,....
+%###########################################################
+% chapter Verzeichnis der Bilder
+\listoffigures
+% Chapter Verzeichnis der Tabellen
+\listoftables
+% Ausgabe Bibligraphy
+\bibliography{DirectShow}
+% Ausgabe des Glossares
+\printnoidxglossaries
+\end{document}

@@ -1,0 +1,123 @@
+object FormWebCam: TFormWebCam
+  Left = 0
+  Height = 586
+  Top = 0
+  Width = 935
+  ActiveControl = VideoWindow
+  Caption = 'FormWebCam'
+  ClientHeight = 586
+  ClientWidth = 935
+  DesignTimePPI = 120
+  Menu = MainMenu
+  OnClose = FormClose
+  OnCreate = FormCreate
+  Visible = False
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 416
+    Top = 0
+    Width = 528
+    ActivePage = TS_Interfaces
+    TabIndex = 1
+    TabOrder = 0
+    object TS_Video: TTabSheet
+      Caption = 'Video'
+      ClientHeight = 383
+      ClientWidth = 520
+      object VideoWindow: TVideoWindow
+        AnchorSideLeft.Control = TS_Video
+        AnchorSideTop.Control = TS_Video
+        AnchorSideRight.Control = TS_Video
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = TS_Video
+        AnchorSideBottom.Side = asrBottom
+        Left = 3
+        Height = 377
+        Top = 3
+        Width = 514
+        FilterGraph = FilterGraph
+        VMROptions.Mode = vmrWindowed
+        Color = clBlack
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        Canvas.AutoRedraw = False
+        Canvas.Brush.Color = clBlack
+      end
+    end
+    object TS_Interfaces: TTabSheet
+      Caption = 'Interfaces'
+      ClientHeight = 383
+      ClientWidth = 520
+      object TV: TTreeView
+        AnchorSideLeft.Control = TS_Interfaces
+        AnchorSideTop.Control = LblInterfaces
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TS_Interfaces
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = TS_Interfaces
+        AnchorSideBottom.Side = asrBottom
+        Left = 3
+        Height = 357
+        Top = 23
+        Width = 514
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        BorderSpacing.Around = 3
+        DefaultItemHeight = 22
+        TabOrder = 0
+        OnCreateNodeClass = TVCreateNodeClass
+        OnDeletion = TVDeletion
+      end
+      object LblInterfaces: TLabel
+        AnchorSideLeft.Control = TS_Interfaces
+        AnchorSideTop.Control = TS_Interfaces
+        Left = 0
+        Height = 20
+        Top = 0
+        Width = 64
+        Caption = 'Interfaces'
+        ParentColor = False
+      end
+    end
+  end
+  object MainMenu: TMainMenu
+    Left = 276
+    Top = 133
+    object Devices: TMenuItem
+      Caption = 'Devices'
+    end
+    object MenuItem2: TMenuItem
+      Action = actShowFilterEditor
+    end
+    object MenuItem1: TMenuItem
+      Action = actFileExit
+    end
+  end
+  object ActionList: TActionList
+    Left = 352
+    Top = 133
+    object actFileExit: TFileExit
+      Category = 'File'
+      Caption = 'E&xit'
+      Hint = 'Exit'
+    end
+    object actShowFilterEditor: TAction
+      Category = 'Editor'
+      Caption = 'Show FilterEditor'
+      OnExecute = actShowFilterEditorExecute
+    end
+  end
+  object FilterGraph: TFilterGraph
+    Mode = gmCapture
+    GraphEdit = True
+    LinearVolume = True
+    Left = 117
+    Top = 161
+  end
+  object Filter: TFilter
+    BaseFilter.data = {
+      00000000
+    }
+    FilterGraph = FilterGraph
+    Left = 114
+    Top = 232
+  end
+end

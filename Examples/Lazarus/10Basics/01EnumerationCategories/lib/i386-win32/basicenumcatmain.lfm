@@ -1,0 +1,29 @@
+object BasicEnumCatForm: TBasicEnumCatForm
+  Left = 0
+  Height = 351
+  Top = 0
+  Width = 502
+  Caption = 'BasicEnumCatForm'
+  ClientHeight = 351
+  ClientWidth = 502
+  DesignTimePPI = 120
+  Visible = False
+  object BuEnum: TButton
+    Left = 8
+    Height = 25
+    Top = 8
+    Width = 75
+    Caption = 'Enum'
+    OnClick = BuEnumClick
+    TabOrder = 0
+  end
+  object LbCategories: TListBox
+    Left = 8
+    Height = 272
+    Top = 40
+    Width = 212
+    ItemHeight = 0
+    Options = [lboDrawFocusRect]
+    TabOrder = 1
+  end
+end

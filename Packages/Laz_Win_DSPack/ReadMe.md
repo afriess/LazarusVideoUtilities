@@ -1,0 +1,60 @@
+<body>
+    <H1>
+      DSPack 2.3.3.</H1>
+    <P>DSPack is a set of Components and class to write Multimedia Applications using MS Direct Show&nbsp;and DirectX technologies. DSPack&nbsp;is designed to work with DirectX&nbsp;9 on Win9X, ME, 2000, Windows XP, 7, 8, 10 operating   systems.&nbsp;Now&nbsp;VMR (Video Mixing Renderer) is&nbsp;available 
+      on&nbsp;all Windows Operating Systems. DSPack 2 is designed to work with Delphi 5,6,7, CPP Builder 6 and Lazarus/Freepascal</P>
+    <P><IMG alt="" src="Diagram.png"></P>
+    <H2>What can I do with DSPack ?</H2>
+    <P>I've writen DSPack with the idea to provide a non limitative set of components 
+      and class to use DirectShow easier. With DSpack you can create all that you 
+      want: DVD, capture, compression, filters, TV, webcam, DV ...</P>
+    <H2>How to install ?</H2>
+    <H3>All Versions</H3>
+    <P>1 - Install DirectX9 if you plan to use VMR or Direct3D : <A href="http://www.microsoft.com/windows/directx/downloads/drx90.asp">
+        http://www.microsoft.com/windows/directx/downloads/drx90.asp</A></P>
+    <P>2 - Install Direct3D libraries if you plan to use Direct3D : <A href="http://clootie.narod.ru/delphi/download_dx90.html">
+        http://clootie.narod.ru/delphi/download_dx90.html</A></P>
+    <P>3 - Install Windows Media if you plan to use ASF compression or streaming: <A href="http://www.progdigy.com/download/wmfdist.exe">
+        http://www.progdigy.com/download/wmfdist.exe</A></P>
+    <H3>Lazarus</H3>
+     <P>The source and demos are collected fron several places from the Internet and collected here to have all in one place. <STRONG><FONT color="#ff0033">Actual the package for Lazarus is only in the branch wip_Lazarus available</FONT></STRONG> - Andreas Frieß 2017</P>
+    <P>
+      1 -&nbsp;Compile DirectX Package (laz_win_directx.lpk)&nbsp;from the "packages\Lazarus" directtory.</P>
+    <P>2 - Compile DSPack Package (laz_win_dspack.lpk) from the "packages\Lazarus" directory.</P>       
+    <P>This package is only for Win32 (and maybe Win64 - not tested by myself). </P>
+    <H3>Delphi 5,6 &amp; 7</H3>
+    <P>1 - Add this paths to your search directory:
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;(DSPackDir)\src\Directx9
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - (DSPackDir)\src\DSPack
+    </P>
+    <P>
+      2 -&nbsp;Compile DirectX 9 Package (DirectX9_Dx.dpk)&nbsp;from the "packages" 
+      directtory.</P>
+    <P>3 - Compile DSPack Package (DSPack_Dx.dpk) from the "packages" directory.</P>
+    <P>4- Install&nbsp;Design Package (DSPackDesign_Dx.dpk) from the "packages" 
+      directory.</P>
+    <P><STRONG><FONT color="#ff0033">If you have a warning message during the last step on Win9x, probaby the path : "../Delphi.../bin" is not correctly defined in "c:\autoexec.bat", in most case the path is too long. To correct this problem you have to set this path again. Alternatively change the bpl output directory option on each package to "$(DELPHI)\Bin" (Options&gt;Directories/Conditionals&gt;Output directory).</FONT></STRONG></P>
+    <H3>CPP Builder 6</H3>
+    <P>1 - Download the DirectX9 SDK from MS and update&nbsp;the "$(BCB)\Include" 
+      directory. You must also updates the DX SDK with the file provided in the 
+      "(DSPackDir)\Include" directory.</P>
+    <P>2&nbsp;- Add this paths to your search directory:
+      <BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;(DSPackDir)\src\Directx9
+      <BR>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - (DSPackDir)\src\DSPack
+    </P>
+    <P>
+      2 -&nbsp;Compile DirectX 9 Package (DirectX9_BCB6.dpk)&nbsp;from the "packages\Delphi" 
+      directtory.</P>
+    <P>3 - Compile DSPack Package (DSPack_BCB6.dpk) from the "packages\Delphi" directory.</P>
+    <P>4- Install&nbsp;Design Package (DSPackDesign_BCB6.dpk) from the "packages\Delphi" 
+      directory.</P>
+    <H2>What does it cost ?</H2>
+    <P>Nothing, DSPack is distributed under the MPL 1.1, but I accept money to pay web 
+      hosting.</P>
+    <P>Henri Gourvest<br>
+      <A href="mailto:hgourvest@progdigy.com">hgourvest@progdigy.com</A></P>
+  </body>

@@ -1,0 +1,65 @@
+\subsection{Einleitung}
+\gls{DirectShow} (ehemals \"Direct Media\")\footnote{Quelle: Wikipedia\cite{400}}
+DirectShow oder ehemals ActiveMovie bzw. DirectX Media dient der Verarbeitung von Video- und Audio-Dateien, womit sich verschiedenste Arten von Video-Dateien (AVI, MPEG) und Ton-Dateien (z. B. MP3) wiedergeben oder erstellen lassen. Es wird auch Streaming unterstützt und ist durch DirectShow-Filter beliebig erweiterbar.
+DirectShow wurde inzwischen aus dem DirectX SDK entfernt und ist in das Windows Plattform-SDK aufgenommen worden. Somit gehört DirectShow streng genommen nicht mehr zu DirectX, sondern ist jetzt ein Bestandteil der Windows-Plattform.
+
+Lazarus und Freepascal unterstützen eine vielzahl von Umgebungen, DirectShow ist eine FrameWork nur für Windows 32 und 64. Somit können die folgenden Informationen nur für Windowsversionen gelten auf denen zumindest DirectX9 oder neuer installiert ist. 
+
+Die meisten modernen Geräte haben bereits eine Kamera eingebaut. Diese ist intern meistens als USB-Device angeschlossen. Wie sie genau angeschlossen ist, ist für den Programmiere nicht relevant, solange die Kamera vom System erkannt wird und die entsprechenden Treiber von Windows geladen werden. Entweder sind die Treiber bereits generisch in Windows enthalten oder werden vom Hersteller zur Verfügung gestellt.   
+
+In den Beispielen wird es spezielle um Informationen gehen die sich in erster Linie mit Kameras und den verbunden Einstellungen beschäftigt.
+
+\subsection{Abfragen der Kategorien}
+Die verschiedenen Filter sind in Kategorien eingeteilt, diese Ergeben sich aus dem Zweck der Filter und sind vom System her vorgegeben. Kategorien werden am einfachsten über \textbf{TSysDevEnum} aus dem Paket \textbf{DXSUtils} abgefragt. Wir lassen uns hier den lesbaren Namen \gls{FriendlyName} statt der \gls{GUID} anzeigen. Später können wir die weiteren Informationen die wir über \textbf{TSysDevEnum} abfragen, durch die Angabe einer \gls{GUID} auf die benötigten einschränken. 
+
+\begin{verbatim}
+unit BasicEnumCatMain;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls;
+
+type
+
+ {TBasicEnumCatForm }
+
+TBasicEnumCatForm = class(TForm)
+  BuEnum: TButton;
+  LbCategories: TListBox;
+  procedure BuEnumClick(Sender: TObject);
+end;
+
+var
+  BasicEnumCatForm: TBasicEnumCatForm;
+
+implementation
+
+uses
+  DXSUtil, DirectShow9;
+
+{$R *.lfm}
+
+  {TBasicEnumCatForm }
+
+procedure TBasicEnumCatForm.BuEnumClick(Sender: TObject);
+var
+  i: integer;
+  SysDev: TSysDevEnum;
+begin
+  SysDev:= TSysDevEnum.Create;
+  try
+    if SysDev.CountCategories > 0 then
+      for i := 0 to SysDev.CountCategories - 1 do begin
+        LbCategories.Items.Add(SysDev.Categories[i].FriendlyName);
+      end;
+  finally
+    FreeAndNil(SysDev);
+  end;
+end;
+end.
+\end{verbatim}
+Das Ergebinis siehtfolgendermassen aus:
+

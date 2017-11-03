@@ -1,0 +1,37 @@
+%####################################################################
+%    Copyright @ 2007-2017 Andreas Frieﬂ (Friess)
+%    Permission is granted to copy, distribute and/or modify this document
+%    under the terms of the GNU Free Documentation License, Version 1.2
+%    or any later version published by the Free Software Foundation;
+%    with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+%    A copy of the license is included in the section entitled ``GNU
+%    Free Documentation License''.
+%%####################################################################
+% Created: 24.05.2017
+%%####################################################################
+% !!!!! Copyrighted Text !!!!!! from
+% https://msdn.microsoft.com/de-de/library/windows/desktop/dd375470(v=vs.85).aspx
+%%####################################################################
+
+\subsection{The Challenge of Multimedia}
+Working with multimedia presents several major challenges:
+\begin{itemize}
+	\item Multimedia streams contain large amounts of data, which must be processed very quickly.
+\item Audio and video must be synchronized so that it starts and stops at the same time, and plays at the same rate.
+\item Data can come from many sources, including local files, computer networks, television broadcasts, and video cameras.
+\item Data comes in a variety of formats, such as Audio-Video Interleaved (AVI), Advanced Streaming Format (ASF), Motion Picture Experts Group (MPEG), and Digital Video (DV).
+\item The programmer does not know in advance what hardware devices will be present on the end-user's system.
+\end{itemize}
+\subsection{The DirectShow Solution}
+DirectShow is designed to address each of these challenges. Its main design goal is to simplify the task of creating digital media applications on the Windows platform, by isolating applications from the complexities of data transports, hardware differences, and synchronization.
+\\To achieve the throughput needed to stream video and audio, DirectShow uses Direct3D and DirectSound whenever possible. These technologies render data efficiently to the user's sound and graphics cards. DirectShow synchronizes playback by encapsulating media data in time-stamped samples. To handle the variety of sources, formats, and hardware devices that are possible, DirectShow uses a modular architecture, in which the application mixes and matches different software components called filters.
+\\DirectShow provides filters that support capture and tuning devices based on the Windows Driver Model (WDM), as well as filters that support older Video for Windows (VfW) capture cards, and codecs written for the Audio Compression Manager (ACM) and Video Compression Manager (VCM) interfaces.
+\\The following diagram \ref{fig:ic420381} shows the relationship between an application, the DirectShow components, and some of the hardware and software components that DirectShow supports.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\linewidth]{ms_pic/IC420381}
+	\caption{Relationship between application and DirectShow }
+	\label{fig:ic420381}
+\end{figure}
+As illustrated here, DirectShow filters communicate with, and control, a wide variety of devices, including the local file system, TV tuner and video capture cards, VfW codecs, the video display (through DirectDraw or GDI), and the sound card (through DirectSound). Thus, DirectShow insulates the application from many of the complexities of these devices. DirectShow also provides native compression and decompression filters for certain file formats.
+

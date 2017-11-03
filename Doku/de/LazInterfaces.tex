@@ -1,0 +1,99 @@
+\subsection{Interfaces}
+\subsubsection{IMoniker}
+Instanzen haben in COM keine GUIDs, sondern Moniker. Moniker werden intern selbst in Objekten (Moniker-Objekten mit der Schnittstelle IMoniker) gespeichert. Ein COM-Server kann einem COM-Client ein Moniker-Objekt übergeben, um dem Client zu ermöglichen, zu einem späteren Zeitpunkt wieder eine Verbindung zu dieser Instanz aufzunehmen, nachdem die Objektreferenz zwischenzeitlich gelöscht wurde.
+\paragraph{Allgemein}
+Ermöglicht es Ihnen, ein Moniker-Objekt zu verwenden, das Informationen enthält, die ein COM-Objekt eindeutig identifizieren. Ein Objekt, das einen Zeiger auf die IMoniker-Schnittstelle des Monikerobjekts hat, kann den identifizierten Objekt lokalisieren, aktivieren und erhalten, ohne irgendwelche anderen spezifischen Informationen darüber zu haben, wo sich das Objekt tatsächlich in einem verteilten System befindet.
+Moniker werden als Grundlage für die Verknüpfung in COM verwendet. Ein verknüpftes Objekt enthält einen Moniker, der seine Quelle identifiziert. Wenn der Benutzer das verknüpfte Objekt aktiviert, um es zu bearbeiten, ist der Moniker gebunden, dies lädt die Linkquelle in den Speicher.
+\paragraph{Besonderheiten}
+Wie ein Pfad zu einer Datei in einem Dateisystem, enthält ein Moniker Informationen, die es ermöglichen, ein COM-Objekt zu lokalisieren und zu aktivieren. Moniker können jede Art von COM-Objekt aus einem in einer Datei gespeicherten Dokumentobjekt zu einer Auswahl innerhalb eines eingebetteten Objekts identifizieren. COM bietet eine Reihe von Moniker-Klassen, mit denen Sie Moniker-Objekte erstellen können, die die am häufigsten im System gefundenen Objekte identifizieren. Zum Beispiel könnte es ein Objekt sein, das einen Bereich von Zellen in einer Kalkulationstabelle darstellt, die selbst in einem Textdokument eingebettet ist, das in einer Datei gespeichert ist. In einem verteilten System würde der Moniker dieses Objekts den Ort des Objektsystems, den physischen Standort der Datei auf diesem System, die Speicherung des eingebetteten Objekts innerhalb dieser Datei und schließlich die Position des Zellenbereichs innerhalb des eingebetteten Objekts identifizieren.
+
+Ein Moniker-Objekt unterstützt die IMoniker-Schnittstelle, die aus der IPersistStream-Schnittstelle abgeleitet wird und ein einzelnes Objekt im System eindeutig identifiziert. Nachdem ein Objekt, das einen Moniker bereitstellt, das Moniker-Objekt erstellt hat, kann diese Information innerhalb dieses Objekts nicht geändert werden. Wenn der Moniker-Provider die Informationen ändert, kann er dies nur durch die Erstellung eines neuen Moniker-Objekts tun, das dann das betreffende Objekt eindeutig identifizieren würde.
+
+Moniker haben folgende zwei wichtige Fähigkeiten:
+\begin{itemize}
+	\item Moniker können in einem persistenten Speicher gespeichert werden. Wenn ein Moniker wieder in den Speicher geladen wird, identifiziert er immer noch dasselbe Objekt.
+	\item Monikers unterstützen eine Operation namens Bindung, die der Prozess des Lokalisierens des vom Moniker benannten Objekts ist, das Objekt wird ind den Speicher geladen, wenn es nicht bereits aktiv ist und ein Zeiger zurüchgegeben der auf die angeforderte Schnittstelle des Objekt zeigt.
+\end{itemize}
+
+\paragraph{Methoden}
+Beschreibung von Microsoft\footnote{Quelle: https://msdn.microsoft.com/en-us/library/windows/desktop/ms679705(v=vs.85).aspx}
+
+\begin{tabular}{|r|l|}
+	\hline 
+	\textbf{Method}&\textbf{Description}\\ 
+	\hline
+	BindToObject&Bind to the specified object.\\ 
+	\hline
+	BindToStorage&Binds to the storage for the specified object.\\ 
+	\hline
+	CommonPrefixWith&Creates a new moniker based on the prefix that this moniker has in common with the specified moniker.\\ 
+	\hline
+	ComposeWith&Creates a new composite moniker by combining the current moniker with the specified moniker.\\ 
+	\hline
+	Enum&Retrieves a pointer to an enumerator for the components of a composite moniker.\\ 
+	\hline
+	GetDisplayName&Retrieves the display name for the moniker.\\ 
+	\hline
+	GetTimeOfLastChange&Retrieves the time at which the object identified by this moniker was last changed.\\ 
+	\hline
+	Hash&Creates a hash value using the internal state of the moniker.\\ 
+	\hline
+	Inverse&Creates a moniker that is the inverse of this moniker.\\ 
+	\hline
+	IsEqual&Determines whether this moniker is identical to the specified moniker.\\ 
+	\hline
+	IsRunning&Determines whether the object identified by this moniker is currently loaded and running.\\ 
+	\hline
+	IsSystemMoniker&Determines whether this moniker is one of the system-provided moniker classes.\\ 
+	\hline
+	ParseDisplayName&Converts a display name into a moniker.\\ 
+	\hline
+	Reduce&Reduces a moniker to its simplest form.\\ 
+	\hline
+	RelativePathTo&Creates a relative moniker between this moniker and the specified moniker.\\ 
+	\hline
+\end{tabular} 
+
+
+\begin{lstlisting}
+// part of ActiveX
+PIMoniker = ^IMoniker;
+IMoniker = Interface (IPersistStream)
+  ['{0000000f-0000-0000-C000-000000000046}']
+  Function BindToObject (const pbc:IBindCtx;const mktoleft:IMoniker; const RiidResult:TIID;Out vresult):HResult;StdCall;
+  Function BindToStorage(Const Pbc:IBindCtx;
+  				Const mktoLeft:IMoniker;
+  				const Riid:TIID;
+  				Out vobj):HResult; StdCall;
+  Function Reduce (const pbc:IBindCtx; 
+               dwReduceHowFar:DWord; 
+               mktoLeft: PIMoniker; 
+               Out mkReduced:IMoniker):HResult; StdCall;
+  Function ComposeWith(Const MkRight:IMoniker;
+               fOnlyIfNotGeneric:BOOL; 
+               OUT mkComposite:IMoniker):HResult; StdCall;
+  Function Enum(fForward:Bool;
+               Out enumMoniker:IEnumMoniker):HResult;StdCall;
+  Function IsEqual(Const mkOtherMoniker:IMoniker):HResult;StdCall;
+  Function Hash   (Out dwHash:Dword):HResult;StdCall;
+  Function IsRunning(Const bc:IBindCtx;
+               Const MkToLeft:IMoniker;
+               Const mknewlyRunning:IMoniker):HResult;StdCall;
+  Function GetTimeOfLastChange(Const bc:IBindCtx;
+               Const mkToLeft:IMoniker; 
+               out ft : FileTime):HResult; StdCall;
+  Function Inverse(out mk : IMoniker):HResult; StdCall;
+  Function CommonPrefixWith (Const mkOther:IMoniker):HResult; StdCall;
+  Function RelativePathTo(Const mkother:IMoniker; 
+               Out mkRelPath : IMoniker):HResult;StdCall;
+  Function GetDisplayName(Const bc:IBindCtx;
+               const mktoleft:IMoniker;
+               Out szDisplayName: pOleStr):HResult; StdCall;
+  Function ParseDisplayName(Const bc:IBindCtx;
+               Const mkToLeft:IMoniker;
+               szDisplayName:POleStr;
+               out cheaten:ULong;
+               out mkOut:IMoniker):HResult; StdCall;
+  Function IsSystemMoniker(Out dwMkSys:DWord):HResult;StdCall;
+End;
+\end{lstlisting}

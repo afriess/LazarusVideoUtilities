@@ -1,0 +1,76 @@
+\subsection{AM\_MEDIA\_TYPE structure}\footnote{Quelle:\cite{504}}
+The AM\_MEDIA\_TYPE structure describes the format of a media sample.
+\paragraph{Syntax}
+\begin{verbatim}
+C++
+
+typedef struct \_MediaType {
+        GUID     majortype;
+        GUID     subtype;
+        BOOL     bFixedSizeSamples;
+        BOOL     bTemporalCompression;
+        ULONG    lSampleSize;
+        GUID     formattype;
+        IUnknown *pUnk;
+        ULONG    cbFormat;
+    BYTE     *pbFormat;
+    } AM\_MEDIA\_TYPE;
+\end{verbatim}
+\paragraph{Members}
+
+\begin{description}
+	\item[majortype]
+Globally unique identifier (GUID) that specifies the major type of the media sample. For a list of possible major types, see Media Types.
+	\item[subtype] GUID that specifies the subtype of the media sample. For a list of possible subtypes, see Media Types. For some formats, the value might be MEDIASUBTYPE\_None, which means the format does not require a subtype.
+	\item[bFixedSizeSamples] If TRUE, samples are of a fixed size. This field is informational only. For audio, it is generally set to TRUE. For video, it is usually TRUE for uncompressed video and FALSE for compressed video.
+	\item[bTemporalCompression] If TRUE, samples are compressed using temporal (interframe) compression. A value of TRUE indicates that not all frames are key frames. This field is informational only.
+	\item[lSampleSize] Size of the sample in bytes. For compressed data, the value can be zero.
+	\item[formattype] GUID that specifies the structure used for the format block. The pbFormat member points to the corresponding format structure. Format types include the following:\\ \\
+\begin{tabular}[h]{||l|l||}
+		\hline \hline
+	Format type & Format structure \\ \hline
+	FORMAT\_DvInfo & DVINFO \\ \hline
+	FORMAT\_MPEG2Video &	MPEG2VIDEOINFO \\ \hline
+	FORMAT\_MPEGStreams & AM\_MPEGSYSTEMTYPE \\ \hline
+	FORMAT\_MPEGVideo & MPEG1VIDEOINFO \\ \hline
+	FORMAT\_None &	None \\ \hline
+	FORMAT\_VideoInfo & VIDEOINFOHEADER \\ \hline
+	FORMAT\_VideoInfo2 &	VIDEOINFOHEADER2 \\ \hline
+	FORMAT\_WaveFormatEx & WAVEFORMATEX \\ \hline
+	GUID\_NULL &	None \\
+	\hline \hline
+\end{tabular}
+	\item[pUnk] Not used. Set to NULL.
+	\item[cbFormat] Size of the format block, in bytes.
+	\item[pbFormat] Pointer to the format block. The structure type is specified by the formattype member. The format structure must be present, unless \textbf{formattype} is GUID\_NULL or FORMAT\_None.\\The \textbf{pbFormat} buffer must be allocated by calling CoTaskMemAlloc. To release the format block, call \textbf{FreeMediaType}.	
+\end{description}
+
+\paragraph{Remarks}
+
+When two pins connect, they negotiate a media type, which is defined by an AM\_MEDIA\_TYPE structure. The media type describes the format of the data that the filters will exchange. If the filters do not agree on a media type, they cannot connect.
+The stream type is specified by two GUIDs, called the major type and the subtype. The major type defines the general category, such as video, audio, or byte stream. The subtype defines a narrower category within the major type. For example, video subtypes include 8-bit, 16-bit, 24-bit, and 32-bit RGB.\\
+The AM\_MEDIA\_TYPE structure is followed by a variable-length block of data that contains format-specific information. The pbFormat member points to this block, called the format block. The layout of the format block depends on the type of data in the stream, and is specified by the formattype member. The format block might be NULL. Check the cbFormat member to determine the size. Cast the pbFormat member to access the format block. For example:
+
+\begin{verbatim}
+C++
+
+if (pmt->formattype == FORMAT\_VideoInfo)
+{
+    // Check the buffer size.
+    if (pmt->cbFormat >= sizeof(VIDEOINFOHEADER))
+    {
+        VIDEOINFOHEADER *pVih = 
+        reinterpret\_cast<VIDEOINFOHEADER*>(pmt->pbFormat);
+        /* Access VIDEOINFOHEADER members through pVih. */
+    }
+}
+\end{verbatim}
+\paragraph{Requirements}
+\begin{tabular}[h]{|l|l|}
+	\hline
+	HeaderL & Strmif.h (include Dshow.h)\\
+	\hline
+\end{tabular}
+
+
+

@@ -1,0 +1,29 @@
+object BasicCatForm: TBasicCatForm
+  Left = 0
+  Height = 351
+  Top = 0
+  Width = 502
+  ActiveControl = BuSelect
+  Caption = 'BasicCatForm'
+  ClientHeight = 351
+  ClientWidth = 502
+  DesignTimePPI = 120
+  Visible = False
+  object BuSelect: TButton
+    Left = 8
+    Height = 25
+    Top = 8
+    Width = 99
+    Caption = 'Enum Filters'
+    OnClick = BuSelectClick
+    TabOrder = 0
+  end
+  object TV: TTreeView
+    Left = 8
+    Height = 296
+    Top = 40
+    Width = 361
+    DefaultItemHeight = 22
+    TabOrder = 1
+  end
+end

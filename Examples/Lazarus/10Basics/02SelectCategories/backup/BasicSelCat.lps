@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="6">
+      <Unit0>
+        <Filename Value="BasicSelCat.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="basiccatmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="BasicCatForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="40"/>
+        <CursorPos X="7" Y="50"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="..\..\Filter\02_WebCam\webcammain.pas"/>
+        <ComponentName Value="FormWebCam"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="WebCamMain"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="55"/>
+        <CursorPos X="26" Y="64"/>
+        <UsageCount Value="10"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="..\..\Filter\01_FilterEnumerator\Editor.pas"/>
+        <ComponentName Value="FormEditor"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="114"/>
+        <CursorPos X="5" Y="99"/>
+        <UsageCount Value="10"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="..\..\..\..\src\DSPack\DXSUtil.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2139"/>
+        <CursorPos X="23" Y="2154"/>
+        <UsageCount Value="10"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="..\..\..\..\src\DirectX9\DirectShow9.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="11439"/>
+        <CursorPos X="3" Y="11450"/>
+        <UsageCount Value="10"/>
+      </Unit5>
+    </Units>
+    <JumpHistory Count="8" HistoryIndex="7">
+      <Position1>
+        <Filename Value="basiccatmain.pas"/>
+        <Caret Line="42" Column="21" TopLine="33"/>
+      </Position1>
+      <Position2>
+        <Filename Value="basiccatmain.pas"/>
+        <Caret Line="42" Column="21" TopLine="33"/>
+      </Position2>
+      <Position3>
+        <Filename Value="basiccatmain.pas"/>
+        <Caret Line="44" Column="21" TopLine="35"/>
+      </Position3>
+      <Position4>
+        <Filename Value="basiccatmain.pas"/>
+        <Caret Line="43" Column="21" TopLine="34"/>
+      </Position4>
+      <Position5>
+        <Filename Value="basiccatmain.pas"/>
+        <Caret Line="53" Column="5" TopLine="34"/>
+      </Position5>
+      <Position6>
+        <Filename Value="basiccatmain.pas"/>
+        <Caret Line="49" Column="19" TopLine="37"/>
+      </Position6>
+      <Position7>
+        <Filename Value="basiccatmain.pas"/>
+        <Caret Line="55" Column="81" TopLine="37"/>
+      </Position7>
+      <Position8>
+        <Filename Value="basiccatmain.pas"/>
+        <Caret Line="52" Column="44" TopLine="41"/>
+      </Position8>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>
