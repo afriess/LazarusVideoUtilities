@@ -32,6 +32,7 @@ unit DSEditors;
 interface
 {$I dspack.inc}
 
+
 uses
 
 {$IFDEF COMPILER6_UP} DesignIntf, DesignEditors, {$ELSE} {$IFDEF FPC} componenteditors, propedits, LResources, {$ELSE} DsgnIntf, {$ENDIF} {$ENDIF}
@@ -131,5 +132,5 @@ uses MediaTypeEditor, BaseFilterEditor, Classes;
   end;
 
 initialization
-  {$i dspack_lazarus.lrs}
+ // {$i dspack_lazarus.lrs}
 end.
