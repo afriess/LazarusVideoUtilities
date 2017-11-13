@@ -1,3 +1,12 @@
+Thanks to
+Clootie -> MS DirectX 9.0 SDK = http://www.clootie.ru/fpc/index.html
+The BlachSheep -> DSPack - Lazarus version of the progdigy DSPack DirectShow Multimedia components = https://github.com/TheBlackSheep/DSPack-Lazarus
+
+Mike.Cornflake -> lazarusvideoutilities = https://sourceforge.net/projects/lazarusvideoutilities/
+
+
+
+--------------------- 
 Description
 Currently there are several options for playing video in Lazarus
 * LCLVCL - Trunk only

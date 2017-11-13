@@ -1155,13 +1155,17 @@ end;
     Moniker: IMoniker;
     ROT    : IRunningObjectTable;
     wsz    : UnicodeString;
-    // martin begin
     {$IFDEF FPC}
-    lwID   : DWORD;
+    lwID   : DWORD; // martin
+    BindCtx: IBindCtx; // af
     {$ENDIF}
-    // martin end
   begin
+    {$IFDEF FPC}
+    result:=CreateBindCtx(0, BindCtx);                  // af
+    result := bindCtx.GetRunningObjectTable(ROT);       // af
+    {$ELSE}
     result := GetRunningObjectTable(0, ROT);
+    {$ENDIF}
     if (result <> S_OK) then exit;
     wsz := format('FilterGraph %p pid %x',[pointer(graph),GetCurrentProcessId()]);
     result  := CreateItemMoniker('!', PWideChar(wsz), Moniker);
@@ -1182,8 +1186,16 @@ end;
   //----------------------------------------------------------------------------
   function RemoveGraphFromRot(ID: integer): HRESULT;
   var ROT: IRunningObjectTable;
+    {$IFDEF FPC}
+    BindCtx: IBindCtx; // af
+    {$ENDIF}
   begin
+    {$IFDEF FPC}
+    OleCheck(CreateBindCtx(0, BindCtx));             // af
+    result := bindCtx.GetRunningObjectTable(ROT);    // af
+    {$ELSE}
     result := GetRunningObjectTable(0, ROT);
+    {$ENDIF}
     if (result <> S_OK) then exit;
     result := ROT.Revoke(ID);
     ROT := nil;
